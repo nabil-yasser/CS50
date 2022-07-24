@@ -45,7 +45,7 @@ int compute_score(string word)
         {
             word[i] = tolower(word[i]);
         }
-        if(word[i] >= 'a' && word[i] <= 'z')
+        if (word[i] >= 'a' && word[i] <= 'z')
         {
             int letter = word[i] - 97;
             answer += POINTS[letter];
