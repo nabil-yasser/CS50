@@ -46,6 +46,7 @@ int main(void)
     }
 }
 
+// Counts Letters in user input string
 int count_char(string input)
 {
     int i = 0, lCount = 0;
@@ -60,6 +61,7 @@ int count_char(string input)
     return lCount;
 }
 
+// Counts words in user input string
 int count_words(string input)
 {
     int i = 0, wCount = 0;
@@ -74,6 +76,7 @@ int count_words(string input)
     return wCount + 1;
 }
 
+// Counts Sentences in user input string
 int count_sentences(string input)
 {
     int i = 0, sCount = 0;
