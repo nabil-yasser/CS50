@@ -21,15 +21,15 @@ int main(void)
     // TODO: Print the winner
     if (score1 > score2)
     {
-        printf("Player1 (%i) defeats Player2 (%i).\n", score1, score2);
+        printf("Player 1 wins!\n");
     }
     else if (score1 < score2)
     {
-        printf("Player2 (%i) defeats Player1 (%i).\n", score2, score1);
+        printf("Player 2 wins!\n");
     }
     else
     {
-        printf("Tie! (%i)(%i)\n", score1, score2);
+        printf("Tie!\n");
     }
     return 0;
 }
@@ -47,7 +47,8 @@ int compute_score(string word)
         }
         if(word[i] >= 'a' && word[i] <= 'z')
         {
-            answer += POINTS[i];
+            int letter = word[i] - 97;
+            answer += POINTS[letter];
         }
         i++;
     }
