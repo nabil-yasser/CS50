@@ -127,11 +127,12 @@ string substitute(string text, string key)
     int n = strlen(text);
     int finalMap[n];
     string smallMap = "abcdefghijklmnopqrstuvwxyz";
+    string capitalMap = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < 26; j++)
         {
-            if (text[i] == smallMap[j] || text[i] == toupper(smallMap[j]))
+            if (text[i] == smallMap[j] || text[i] == capitalMap[j])
             {
                 finalMap[i] = j;
                 break;
