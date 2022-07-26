@@ -43,7 +43,7 @@ int main(int argc, string argv[])
     }
 
     // Convert lowercase
-    userKey = convert_lowercase(userKey);
+    convert_lowercase(userKey);
 
     // Check if the key has no repeated letters
     if (check_repeat(userKey) == true)
