@@ -57,7 +57,7 @@ int main(int argc, string argv[])
 
     // Mapping the key provided to substitution
     string ciphertext = substitute(plaintext, userKey);
-    printf("Ciphertext: %s\n", ciphertext);
+    printf("ciphertext: %s\n", ciphertext);
     return 0;
 }
 
