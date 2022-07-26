@@ -101,15 +101,16 @@ bool check_repeat(string s)
 {
     int n = strlen(s);
     bool check = true;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n && check == true; i++)
     {
-        for (int j = 0; j < n && check == true; j++)
+        for (int j = 0; j < n; j++)
         {
             if (i != j)
             {
                 if (s[i] == s[j])
                 {
                     check = false;
+                    break;
                 }
                 else
                 {
