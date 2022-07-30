@@ -145,13 +145,11 @@ void tabulate(void)
     {
         for (int j = 0; j < candidate_count; j++)
         {
-            if (preferences[i][j] == j)
+            int c = preferences[i][j];
+            if (candidates[i].eliminated == false)
             {
-                if (candidates[j].eliminated == false)
-                {
-                    j++;
-                }
                 candidates[j].votes++;
+                break;
             }
         }
     }
@@ -161,23 +159,14 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-    int winValue;
-    if (voter_count % 2 == 0)
+    int winValue = voter_count / 2;
+
+    for (int i = 0; i < candidate_count; i++)
     {
-        winValue = voter_count / 2 + 1;
-    }
-    else
-    {
-        winValue = voter_count / 2 + 0.5;
-    }
-    for (int i = 0; i < voter_count; i++)
-    {
-        for (int j = 0; j < candidate_count; j++)
+        if (candidates[i].votes > winValue)
         {
-            if (preferences[i][j] > winValue)
-            {
-                return true;
-            }
+            printf("%s\n", candidates[i].name);
+            return true;
         }
     }
     return false;
@@ -186,7 +175,7 @@ bool print_winner(void)
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
 {
-    int minValue = voter_count;
+    int minValue = candidates[0].votes;
     for (int i = 0; i < candidate_count; i++)
     {
         if (candidates[i].votes < minValue && candidates[i].eliminated == false)
@@ -200,14 +189,11 @@ int find_min(void)
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
 {
-    for (int i = 0; i < voter_count; i++)
+    for (int i = 0; i < candidate_count; i++)
     {
-        for (int j = 0; j < candidate_count; j++)
+        if (candidates[i].votes != min && !candidates[i].eliminated)
         {
-            if (candidates[i].votes == candidates[j].votes == min && candidates[i].eliminated == false)
-            {
-                return true;
-            }
+            return true;
         }
     }
     return false;
