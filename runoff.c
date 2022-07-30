@@ -146,9 +146,9 @@ void tabulate(void)
         for (int j = 0; j < candidate_count; j++)
         {
             int c = preferences[i][j];
-            if (candidates[i].eliminated == false)
+            if (candidates[c].eliminated == false)
             {
-                candidates[j].votes++;
+                candidates[c].votes++;
                 break;
             }
         }
@@ -193,10 +193,10 @@ bool is_tie(int min)
     {
         if (candidates[i].votes != min && !candidates[i].eliminated)
         {
-            return true;
+            return false;
         }
     }
-    return false;
+    return true;
 }
 
 // Eliminate the candidate (or candidates) in last place
