@@ -8,10 +8,14 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 0; j < width; j++)
         {
-            BYTE tmpAverage = round(((image[i][j].rgbtRed + image[i][j].rgbtGreen + image[i][j].rgbtBlue) / 3.0));
-            if (tmpAverage > 255)
+            BYTE tmpAverage;
+            if (round(((image[i][j].rgbtRed + image[i][j].rgbtGreen + image[i][j].rgbtBlue) / 3.0)) > 255)
             {
                 tmpAverage = 255;
+            }
+            else
+            {
+                tmpAverage = round(((image[i][j].rgbtRed + image[i][j].rgbtGreen + image[i][j].rgbtBlue) / 3.0));
             }
             image[i][j].rgbtRed = tmpAverage;
             image[i][j].rgbtGreen = tmpAverage;
@@ -66,6 +70,21 @@ void sepia(int height, int width, RGBTRIPLE image[height][width])
 // Reflect image horizontally
 void reflect(int height, int width, RGBTRIPLE image[height][width])
 {
+    RGBTRIPLE imageTmp[height][width];
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0, k = width - 1; j < width; j++, k--)
+        {
+            imageTmp[i][j] = image[i][k];
+        }
+    }
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            image[i][j] = imageTmp[i][j];
+        }
+    }
     return;
 }
 
