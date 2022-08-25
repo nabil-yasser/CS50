@@ -103,22 +103,31 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 // Calculate average colors for corners
                 if (j == 0)
                 {
-                    AverageRed = round(((image[i][j].rgbtRed + image[i][j + 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 4.0));
-                    AverageGreen = round(((image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 4.0));
-                    AverageBlue = round(((image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j + 1].rgbtBlue) / 4.0));
+                    AverageRed = round(((image[i][j].rgbtRed + image[i][j + 1].rgbtRed
+                                + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 4.0));
+                    AverageGreen = round(((image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen
+                                + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 4.0));
+                    AverageBlue = round(((image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue
+                                + image[i + 1][j].rgbtBlue + image[i + 1][j + 1].rgbtBlue) / 4.0));
                 }
                 else if (j == width - 1)
                 {
-                    AverageRed = round(((image[i][j].rgbtRed + image[i][j - 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j - 1].rgbtRed) / 4.0));
-                    AverageGreen = round(((image[i][j].rgbtGreen + image[i][j - 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j - 1].rgbtGreen) / 4.0));
-                    AverageBlue = round(((image[i][j].rgbtBlue + image[i][j - 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j - 1].rgbtBlue) / 4.0));
+                    AverageRed = round(((image[i][j].rgbtRed + image[i][j - 1].rgbtRed
+                                + image[i + 1][j].rgbtRed + image[i + 1][j - 1].rgbtRed) / 4.0));
+                    AverageGreen = round(((image[i][j].rgbtGreen + image[i][j - 1].rgbtGreen
+                                + image[i + 1][j].rgbtGreen + image[i + 1][j - 1].rgbtGreen) / 4.0));
+                    AverageBlue = round(((image[i][j].rgbtBlue + image[i][j - 1].rgbtBlue
+                                + image[i + 1][j].rgbtBlue + image[i + 1][j - 1].rgbtBlue) / 4.0));
                 }
                 // Calculate average colors for top edge
                 else
                 {
-                    AverageRed = round(((image[i][j - 1].rgbtRed + image[i][j].rgbtRed + image[i][j + 1].rgbtRed + image[i + 1][j - 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 6.0));
-                    AverageGreen = round(((image[i][j - 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen + image[i + 1][j - 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 6.0));
-                    AverageBlue = round(((image[i][j - 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue + image[i + 1][j - 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j + 1].rgbtBlue) / 6.0));
+                    AverageRed = round(((image[i][j - 1].rgbtRed + image[i][j].rgbtRed + image[i][j + 1].rgbtRed
+                                + image[i + 1][j - 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 6.0));
+                    AverageGreen = round(((image[i][j - 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen
+                                + image[i + 1][j - 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 6.0));
+                    AverageBlue = round(((image[i][j - 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue
+                                + image[i + 1][j - 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j + 1].rgbtBlue) / 6.0));
                 }
             }
             // Calculate average colors for bottom Row
@@ -127,22 +136,31 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 // Calculate average colors for corners
                 if (j == 0)
                 {
-                    AverageRed = round(((image[i][j].rgbtRed + image[i][j + 1].rgbtRed + image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed) / 4.0));
-                    AverageGreen = round(((image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen + image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen) / 4.0));
-                    AverageBlue = round(((image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue + image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue) / 4.0));
+                    AverageRed = round(((image[i][j].rgbtRed + image[i][j + 1].rgbtRed
+                                + image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed) / 4.0));
+                    AverageGreen = round(((image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen
+                                + image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen) / 4.0));
+                    AverageBlue = round(((image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue
+                                + image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue) / 4.0));
                 }
                 else if (j == width - 1)
                 {
-                    AverageRed = round(((image[i][j].rgbtRed + image[i][j - 1].rgbtRed + image[i - 1][j].rgbtRed + image[i - 1][j - 1].rgbtRed) / 4.0));
-                    AverageGreen = round(((image[i][j].rgbtGreen + image[i][j - 1].rgbtGreen + image[i - 1][j].rgbtGreen + image[i - 1][j - 1].rgbtGreen) / 4.0));
-                    AverageBlue = round(((image[i][j].rgbtBlue + image[i][j - 1].rgbtBlue + image[i - 1][j].rgbtBlue + image[i - 1][j - 1].rgbtBlue) / 4.0));
+                    AverageRed = round(((image[i][j].rgbtRed + image[i][j - 1].rgbtRed
+                                + image[i - 1][j].rgbtRed + image[i - 1][j - 1].rgbtRed) / 4.0));
+                    AverageGreen = round(((image[i][j].rgbtGreen + image[i][j - 1].rgbtGreen
+                                + image[i - 1][j].rgbtGreen + image[i - 1][j - 1].rgbtGreen) / 4.0));
+                    AverageBlue = round(((image[i][j].rgbtBlue + image[i][j - 1].rgbtBlue
+                                + image[i - 1][j].rgbtBlue + image[i - 1][j - 1].rgbtBlue) / 4.0));
                 }
                 // Calculate average colors for bottom edge
                 else
                 {
-                    AverageRed = round(((image[i][j - 1].rgbtRed + image[i][j].rgbtRed + image[i][j + 1].rgbtRed + image[i - 1][j - 1].rgbtRed + image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed) / 6.0));
-                    AverageGreen = round(((image[i][j - 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen + image[i - 1][j - 1].rgbtGreen + image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen) / 6.0));
-                    AverageBlue = round(((image[i][j - 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue + image[i - 1][j - 1].rgbtBlue + image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue) / 6.0));
+                    AverageRed = round(((image[i][j - 1].rgbtRed + image[i][j].rgbtRed + image[i][j + 1].rgbtRed
+                                + image[i - 1][j - 1].rgbtRed + image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed) / 6.0));
+                    AverageGreen = round(((image[i][j - 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen
+                                + image[i - 1][j - 1].rgbtGreen + image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen) / 6.0));
+                    AverageBlue = round(((image[i][j - 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue
+                                + image[i - 1][j - 1].rgbtBlue + image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue) / 6.0));
                 }
             }
             // Calculate average colors for the whole image
@@ -151,23 +169,35 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 // Calculate average colors for left edge
                 if (j == 0)
                 {
-                    AverageRed = round(((image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed + image[i][j].rgbtRed + image[i][j + 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 6.0));
-                    AverageGreen = round(((image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 6.0));
-                    AverageBlue = round(((image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j + 1].rgbtBlue) / 6.0));
+                    AverageRed = round(((image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed
+                                + image[i][j].rgbtRed + image[i][j + 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 6.0));
+                    AverageGreen = round(((image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen
+                                + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 6.0));
+                    AverageBlue = round(((image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue
+                                + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j + 1].rgbtBlue) / 6.0));
                 }
                 // Calculate average colors for right edge
                 else if (j == width - 1)
                 {
-                    AverageRed = round(((image[i - 1][j].rgbtRed + image[i - 1][j - 1].rgbtRed + image[i][j].rgbtRed + image[i][j - 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j - 1].rgbtRed) / 6.0));
-                    AverageGreen = round(((image[i - 1][j].rgbtGreen + image[i - 1][j - 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j - 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j - 1].rgbtGreen) / 6.0));
-                    AverageBlue = round(((image[i - 1][j].rgbtBlue + image[i - 1][j - 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j - 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j - 1].rgbtBlue) / 6.0));
+                    AverageRed = round(((image[i - 1][j].rgbtRed + image[i - 1][j - 1].rgbtRed + image[i][j].rgbtRed + image[i][j - 1].rgbtRed
+                                + image[i + 1][j].rgbtRed + image[i + 1][j - 1].rgbtRed) / 6.0));
+                    AverageGreen = round(((image[i - 1][j].rgbtGreen + image[i - 1][j - 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j - 1].rgbtGreen
+                                + image[i + 1][j].rgbtGreen + image[i + 1][j - 1].rgbtGreen) / 6.0));
+                    AverageBlue = round(((image[i - 1][j].rgbtBlue + image[i - 1][j - 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j - 1].rgbtBlue
+                                + image[i + 1][j].rgbtBlue + image[i + 1][j - 1].rgbtBlue) / 6.0));
                 }
                 // Calculate average colors for middle of image
                 else
                 {
-                    AverageRed = round(((image[i - 1][j - 1].rgbtRed + image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed + image[i][j - 1].rgbtRed + image[i][j].rgbtRed + image[i][j + 1].rgbtRed + image[i + 1][j - 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 9.0));
-                    AverageGreen = round(((image[i - 1][j - 1].rgbtGreen + image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen + image[i][j - 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen + image[i + 1][j - 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 9.0));
-                    AverageBlue = round(((image[i - 1][j - 1].rgbtBlue + image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue + image[i][j - 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue + image[i + 1][j - 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j + 1].rgbtBlue) / 9.0));
+                    AverageRed = round(((image[i - 1][j - 1].rgbtRed + image[i - 1][j].rgbtRed + image[i - 1][j + 1].rgbtRed
+                                + image[i][j - 1].rgbtRed + image[i][j].rgbtRed + image[i][j + 1].rgbtRed
+                                + image[i + 1][j - 1].rgbtRed + image[i + 1][j].rgbtRed + image[i + 1][j + 1].rgbtRed) / 9.0));
+                    AverageGreen = round(((image[i - 1][j - 1].rgbtGreen + image[i - 1][j].rgbtGreen + image[i - 1][j + 1].rgbtGreen
+                                + image[i][j - 1].rgbtGreen + image[i][j].rgbtGreen + image[i][j + 1].rgbtGreen
+                                + image[i + 1][j - 1].rgbtGreen + image[i + 1][j].rgbtGreen + image[i + 1][j + 1].rgbtGreen) / 9.0));
+                    AverageBlue = round(((image[i - 1][j - 1].rgbtBlue + image[i - 1][j].rgbtBlue + image[i - 1][j + 1].rgbtBlue
+                                + image[i][j - 1].rgbtBlue + image[i][j].rgbtBlue + image[i][j + 1].rgbtBlue
+                                + image[i + 1][j - 1].rgbtBlue + image[i + 1][j].rgbtBlue + image[i + 1][j + 1].rgbtBlue) / 9.0));
                 }
             }
             if (AverageRed > 255)
