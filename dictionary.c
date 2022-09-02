@@ -13,19 +13,19 @@
 typedef struct node
 {
     char word[LENGTH + 1];
-    struct node *next;
+    struct node* next;
 }
 node;
 
 // TODO: Choose number of buckets in hash table
-const unsigned int N = 676;
+const unsigned int N = 26 * 26 * 26;
 unsigned int sizeCounter = 0;
 
 // Hash table
-node *table[N];
+node* table[N];
 
 // Returns true if word is in dictionary, else false
-bool check(const char *word)
+bool check(const char* word)
 {
     unsigned int hashCode = hash(word);
     for (node* n = table[hashCode]; n != NULL; n = n->next)
@@ -39,22 +39,33 @@ bool check(const char *word)
 }
 
 // Hashes word to a number
-unsigned int hash(const char *word)
+unsigned int hash(const char* word)
 {
-    unsigned char letters[] = {'a', 'b', 'c', 'd' ,'e' ,'f' ,'g' ,'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    unsigned int lettersMapping[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26};
+    unsigned char letters[] = { 'a', 'b', 'c', 'd' ,'e' ,'f' ,'g' ,'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
     for (unsigned char i = 0; i < 26; i++)
     {
         if (tolower(word[0]) == letters[i])
         {
-            return lettersMapping[i];
+            for (unsigned char j = 0; j < 26; j++)
+            {
+                if (tolower(word[1]) == letters[j])
+                {
+                    for (unsigned char k = 0; k < 26; k++)
+                    {
+                        if (tolower(word[2]) == letters[k])
+                        {
+                            return ((676 * i) + (26 * j) + k);
+                        }
+                    }
+                }
+            }
         }
     }
     return 0;
 }
 
 // Loads dictionary into memory, returning true if successful, else false
-bool load(const char *dictionary)
+bool load(const char* dictionary)
 {
     FILE* dictionaryFile = fopen(dictionary, "r");
     if (dictionaryFile == NULL)
@@ -89,7 +100,7 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful, else false
 bool unload(void)
 {
-    for (int i = 0; i < 26; i++)
+    for (int i = 0; i < N; i++)
     {
         for (node* cursor = table[i]; cursor != NULL; )
         {
