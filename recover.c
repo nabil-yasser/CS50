@@ -1,53 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+
 #define BUFFER_SIZE (512 * sizeof(uint8_t))
 
-int main(int argc, char *argv[])
+int main(int32_t argc, char* argv[])
 {
     if (argc != 2)
     {
-        printf("Usage ./recover Filename.raw\n");
+        printf("Usage ./recover filename.raw\n");
         return 1;
     }
-    // Open memory Card
-    FILE *MemoryCard = fopen(argv[1], "r");
+
+    // Open Memory Card raw File
+    FILE* MemoryCard = fopen(argv[1], "r");
     if (MemoryCard == NULL)
     {
-        printf("File Can't be opened\n");
+        printf("Couldn't open file\n");
         return 1;
     }
-    uint8_t *buffer = malloc(BUFFER_SIZE);
-    uint32_t FileCounter = 0;
+    uint8_t* buffer = malloc(BUFFER_SIZE);
     if (buffer == NULL)
     {
         return 1;
     }
-    // Repeat until the end of Card
-    // Read 512 bytes into a buffer
-    FILE *NewJpeg = NULL;
-    char *NewName = malloc(8 * sizeof(uint8_t));
+    FILE* NewJpegFile = NULL;
+    char* NewJpegName = malloc(8 * sizeof(uint8_t));
+    uint32_t FileCounter = 0;
+
+    // Until the end of file do this
     while (fread(buffer, BUFFER_SIZE, 1, MemoryCard))
     {
-        // If start of new JPEG
+        // If start of JPEG file
         if (buffer[0] == 0xFF && buffer[1] == 0xD8 && buffer[2] == 0xFF && (buffer[3] & 0xF0) == 0xE0)
         {
             if (FileCounter > 0)
             {
-                fclose(NewJpeg);
+                fclose(NewJpegFile);
             }
-            sprintf(NewName, "%03i.jpg", FileCounter);
-            NewJpeg = fopen(NewName, "w");
+            sprintf(NewJpegName, "%03i.jpg", FileCounter);
+            NewJpegFile = fopen(NewJpegName, "w");
             FileCounter++;
         }
         if (FileCounter > 0)
         {
-            fwrite(buffer, BUFFER_SIZE, 1, NewJpeg);
+            fwrite(buffer, BUFFER_SIZE, 1, NewJpegFile);
         }
     }
-    // Close Any remaining files
-    fclose(MemoryCard);
     free(buffer);
-    free(NewName);
-    return 0;
+    free(NewJpegName);
+    fclose(MemoryCard);
+    fclose(NewJpegFile);
 }
