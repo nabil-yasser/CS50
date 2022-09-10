@@ -4,7 +4,7 @@
 
 #define BUFFER_SIZE (512 * sizeof(uint8_t))
 
-int main(int32_t argc, char* argv[])
+int main(int32_t argc, char *argv[])
 {
     if (argc != 2)
     {
@@ -13,19 +13,19 @@ int main(int32_t argc, char* argv[])
     }
 
     // Open Memory Card raw File
-    FILE* MemoryCard = fopen(argv[1], "r");
+    FILE *MemoryCard = fopen(argv[1], "r");
     if (MemoryCard == NULL)
     {
         printf("Couldn't open file\n");
         return 1;
     }
-    uint8_t* buffer = malloc(BUFFER_SIZE);
+    uint8_t *buffer = malloc(BUFFER_SIZE);
     if (buffer == NULL)
     {
         return 1;
     }
-    FILE* NewJpegFile = NULL;
-    char* NewJpegName = malloc(8 * sizeof(uint8_t));
+    FILE *NewJpegFile = NULL;
+    char *NewJpegName = malloc(8 * sizeof(uint8_t));
     uint32_t FileCounter = 0;
 
     // Until the end of file do this
