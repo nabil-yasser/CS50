@@ -1,0 +1,11 @@
+sort1 uses: Bubble Sort
+
+How do you know?: time for sorted much less than for reversed and still less than time2 (n^2, n).
+
+sort2 uses: Merge Sort
+
+How do you know?: time for sorted almost the same as reversed but a little bit more than time1 (n.log(n)).
+
+sort3 uses: Selection Sort
+
+How do you know?: time for reversed, sorted and random files are the same
